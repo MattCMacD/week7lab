@@ -4,7 +4,7 @@ CREATE DATABASE NotesDB;
 USE NotesDB;
 
 
-DROP TABLE User;
+DROP TABLE if exists User;
 
 CREATE TABLE User( 
     username VARCHAR(10) NOT NULL,
@@ -16,4 +16,14 @@ CREATE TABLE User(
     PRIMARY KEY (username)
 );
 
+drop table if exists note;
+
+create table note(
+    noteid INT NOT NULL auto_increment,
+    datecreated DATETIME NOT NULL,
+    content VARCHAR(10000) character set utf8 NOT NULL,
+    PRIMARY KEY (noteId));
+
 INSERT INTO User values('admin', 'password', 'test@test.com', 1, 'Bob', 'Bobberson');
+INSERT INTO Note (datecreated, content) values(CURDATE(), 'Dummy note 1');
+INSERT INTO Note (datecreated, content) values(CURDATE(), 'Dummy note 2');
